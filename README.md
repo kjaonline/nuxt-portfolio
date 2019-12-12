@@ -1,6 +1,6 @@
 # kris-alcordo-portfolio
 
-> Kris Alcordo&#39;s Portfolio built on Nuxt
+> Kris Alcordo&#39;s Portfolio built on Nuxt, Ghost and cool fingers.
 
 ## Build Setup
 

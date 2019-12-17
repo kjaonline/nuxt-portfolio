@@ -1,2 +1,11 @@
 @import 'normalize';
+@import 'palette';
+
+@import 'header';
+
+html {
+    font-family: 'Karla', sans-serif;
+    background: $white;
+    color: $fontColor;
+}
 

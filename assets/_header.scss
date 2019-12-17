@@ -1,0 +1,51 @@
+.header {
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  .nav-container{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 5px;
+  }
+  .nav {
+    position: relative;    
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    &.active {
+      span {
+        top: 10px;
+        &:nth-child(1){
+        transform: rotate(45deg);position: absolute;
+      }
+      &:nth-child(2) {
+        display: none;
+      }
+      &:nth-child(3){
+        transform: rotate(-45deg);position: absolute;
+      }
+      }
+    }
+    span {
+      display: block;
+      margin-bottom: 5px;
+      width: 100%;
+      border-radius: 5px;
+      height: 5px;
+      background: $dark;
+      transition: 0.25s all;
+      
+    }
+  }
+  h1 {
+    color: $dark;
+    font-weight: bold;
+    margin: 0;
+  }
+}

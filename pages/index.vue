@@ -1,13 +1,12 @@
 <template>
-  <div class="posts">
-    <ul>
-     
-    </ul>
+  <div class="home-hero">
+   
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
+import '../components/Header'
 
 export default {
   methods: {

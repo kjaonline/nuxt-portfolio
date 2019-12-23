@@ -1,20 +1,27 @@
 <template>
  <div class="home-hero">
-	 <h1>Kris Alcordo</h1>
+	 <div class="text">
+		 <h1>Client Info</h1>
+		 <h2>Client Tag</h2>
+	 </div>
+	 <div class="image">
+		 <img src="~/assets/static/homebg.jpg" alt="" srcset="">
+	 </div>
  </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
+import axios from 'axios'
 
 export default {
   methods: {
     ...mapActions([
-      'getPostsAction'
+      'getBlogPostsAction'
     ])
   },
   mounted() {
-    this.getPostsAction();
+    this.getBlogPostsAction();
   }
 }
 </script>

@@ -20,9 +20,9 @@
     height: 30px;
     width: 30px;
 	cursor: pointer;
-	z-index: 2;
 	top: 10px;
 	left: 10px;
+	z-index: 10;
     &.active {
       span {
 		top: 10px;
@@ -56,6 +56,7 @@
 	  left: -300px;
 	  text-align: left;
 	  width: 300px;
+	  z-index: 9;
 	  background: rgba($color4, .9);
 	  transition: 0.5s all;
 	  padding: 10px;

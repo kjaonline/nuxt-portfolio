@@ -24,7 +24,7 @@
 			</div>
       </div>
       <div class="header-text">
-		  <h1>Kris Alcordo</h1>
+		  <h1>Client Site</h1>
 	  </div>
   </div>
 </template>

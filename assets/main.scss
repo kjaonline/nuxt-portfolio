@@ -1,7 +1,8 @@
-@import 'normalize';
-@import 'palette';
-@import 'footer';
-@import 'header';
+@import 'styles/normalize';
+@import 'styles/palette';
+@import 'styles/footer';
+@import 'styles/header';
+@import 'styles/home';
 
 html {
     font-family: 'Karla', sans-serif;
@@ -9,3 +10,10 @@ html {
     color: $fontColor;
 }
 
+.content-container {
+	 max-width: 1600px;
+	 margin: 0 auto;
+	 width: 100%;
+	 padding: 10px;
+	 display: block;
+}

@@ -1,7 +1,9 @@
 <template>
- <div class="home-hero">
-	 <h1>Kris Alcordo</h1>
- </div>
+  <div class="content-container">
+	  <div class="home-hero">
+		<h1>Blog</h1>
+	</div>
+  </div>
 </template>
 
 <script>

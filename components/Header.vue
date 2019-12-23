@@ -18,6 +18,9 @@
 						<nuxt-link @click.native="hideNav" to="portfolio">Portfolio</nuxt-link>
 					</li>
 					<li>
+						<nuxt-link @click.native="hideNav" to="blog">Blog</nuxt-link>
+					</li>
+					<li>
 						<nuxt-link @click.native="hideNav" to="resume">Resume</nuxt-link>
 					</li>
 				</ul>
@@ -42,7 +45,6 @@ export default {
 		},
 		hideNav: function(){
 			this.isActive = false;
-			console.log('clicked')
 		}
     }
 }

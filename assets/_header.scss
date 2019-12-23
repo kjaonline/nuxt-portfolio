@@ -6,18 +6,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  
+  .header-text {
+	  padding:20px;
+  }
   .nav-container{
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 5px;
+    top: 0;
+    left: 0;
   }
   .nav {
     position: relative;    
     height: 30px;
     width: 30px;
-    cursor: pointer;
+	cursor: pointer;
+	z-index: 2;
+	top: 10px;
+	left: 10px;
     &.active {
       span {
         top: 10px;
@@ -42,6 +47,32 @@
       transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       
     }
+  }
+  .nav-links {
+	  height: 100vh;
+	  position: fixed;
+	  top: 0;
+	  left: -300px;
+	  text-align: left;
+	  width: 300px;
+	  background: #000;
+	  transition: 0.5s all;
+	  padding: 10px;
+	  &.active {
+		left: 0;
+	  }
+	  ul {
+		  list-style-type: none;
+		  margin: 40px 0 0 0;
+		  padding: 0;
+	  }
+	  li {
+		  margin-bottom: 10px;
+	  }
+	  a {
+		  text-decoration: none;
+	  }
+	  
   }
   h1 {
     color: $dark;

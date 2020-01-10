@@ -10,7 +10,7 @@ export const mutations = {
 }
 export const actions = {
    	async getBlogPostsAction(context) {
-		console.log(context)
+		// console.log(context)
 		try {
 			let result = await axios({
 				method: "POST",

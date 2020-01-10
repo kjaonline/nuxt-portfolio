@@ -27,12 +27,14 @@
 			</div>
       </div>
       <div class="header-text">
-		  <h1>Client Site</h1>
+		  <h1>Kris Alcordo</h1>
 	  </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import axios from 'axios'
 export default {
     data: function () {
         return {
@@ -45,8 +47,14 @@ export default {
 		},
 		hideNav: function(){
 			this.isActive = false;
-		}
-    }
+		},
+		...mapActions([
+			'getBlogPostsAction'
+		])
+	},
+	mounted() {
+		this.getBlogPostsAction();
+	}
 }
 </script>
 

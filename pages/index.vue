@@ -1,28 +1,33 @@
 <template>
- <div class="home-hero">
-	 <div class="text">
-		 <h1>Client Info</h1>
-		 <h2>Client Tag</h2>
-	 </div>
-	 <div class="image">
-		 <img src="~/assets/static/homebg.jpg" alt="" srcset="">
-	 </div>
+ <div>
+   <div class="home-hero">
+      <div class="text">
+        <h1>Web Developer</h1>
+        <h2>Jacksonville, Florida</h2>
+      </div>
+      <div class="image">
+        <img src="~/assets/static/homebg.jpg" alt="" srcset="">
+      </div>
+  </div>
+  <div class="home-below-fold">
+    <div class="left">
+
+    </div>
+    <div class="right">
+      
+    </div>
+  </div>
  </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-import axios from 'axios'
+
+import Posts from '@/components/Bloglist'
 
 export default {
-  methods: {
-    ...mapActions([
-      'getBlogPostsAction'
-    ])
-  },
-  mounted() {
-    this.getBlogPostsAction();
-  }
+  components: {
+    Posts
+  }  
 }
 </script>
 

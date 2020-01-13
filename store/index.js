@@ -25,6 +25,7 @@ export const actions = {
 							  title
 							  date
 							  excerpt
+							  slug
 							}
 						  }
 						}

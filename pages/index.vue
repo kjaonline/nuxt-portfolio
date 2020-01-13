@@ -11,7 +11,8 @@
   </div>
   <div class="home-below-fold">
     <div class="left">
-
+      <h2>Blog Posts</h2>
+      <Posts />
     </div>
     <div class="right">
       

@@ -14,6 +14,9 @@
        <a href=""><i class="fab fa-instagram"></i></a>
      </div>
    </div>
+   <div class="disclaimer">
+     <p>This website is powered by NuxtJS front-end and Wordpress API.</p>
+   </div>
   </div>
 </template>
 

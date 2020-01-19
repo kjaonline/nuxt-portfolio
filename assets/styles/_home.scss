@@ -49,3 +49,7 @@
 		}
 	}
 }
+
+.home-below-fold {
+	@include siteWidth;
+}

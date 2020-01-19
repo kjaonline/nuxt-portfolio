@@ -4,6 +4,7 @@
 @import 'styles/footer';
 @import 'styles/header';
 @import 'styles/home';
+@import 'styles/single';
 
 html {
     font-family: 'Karla', sans-serif;
@@ -26,72 +27,3 @@ html {
 	 display: block;
 }
 
-.single-post{
-	@include siteWidth;
-	padding: 10px;
-	position: relative;
-	min-height: 100px;
-	&::before {
-		content: '';
-	}
-	
-	.post-content {
-		visibility: hidden;
-		opacity: 0;
-		transform: scale(1) translateY(-5px);
-		transition: 0.5s all;
-	}
-	&.loaded {
-		.post-content {
-			visibility: visible;
-			opacity: 1;
-			transform: scale(1) translateY(0);
-		}
-		.lds-ring {
-			visibility: hidden;
-			opacity: 0;
-		}
-	}
-	.lds-ring {
-		visibility: visible;
-		opacity: 1;
-		display: inline-block;
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		width: 80px;
-		height: 80px;
-		transition: 0.5s all;
-	  }
-	  .lds-ring div {
-		box-sizing: border-box;
-		display: block;
-		position: absolute;
-		width: 64px;
-		height: 64px;
-		margin: 8px;
-		border: 5px solid $dark;
-		border-radius: 50%;
-		animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-		border-color: $dark transparent transparent transparent;
-	  }
-	  .lds-ring div:nth-child(1) {
-		animation-delay: -0.45s;
-	  }
-	  .lds-ring div:nth-child(2) {
-		animation-delay: -0.3s;
-	  }
-	  .lds-ring div:nth-child(3) {
-		animation-delay: -0.15s;
-	  }
-	  @keyframes lds-ring {
-		0% {
-		  transform: rotate(0deg);
-		}
-		100% {
-		  transform: rotate(360deg);
-		}
-	  }
-	  
-}

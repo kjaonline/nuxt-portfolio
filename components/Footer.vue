@@ -15,7 +15,7 @@
      </div>
    </div>
    <div class="disclaimer">
-     <p>This website is powered by NuxtJS front-end and Wordpress API.</p>
+     <p>This website is powered by NuxtJS and Wordpress API. Check out the <a href="https://github.com/kjaonline/Nuxt-Portfolio ">code on github</a>.</p>
    </div>
   </div>
 </template>

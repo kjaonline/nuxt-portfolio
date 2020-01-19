@@ -2,6 +2,19 @@
 
 > Kris Alcordo&#39;s Portfolio built on Nuxt, Ghost and cool fingers.
 
+## Task List
+- Homepage
+-- Write Introduction
+-- Add skills and other content
+
+-- Blog
+-- Create Breadcrumb for better navigation
+-- Allow commenting
+
+- Portfolio 
+-- Integrate ACF to pull portfolio details
+-- Allow Filter by portfolio tags
+
 ## Build Setup
 
 ``` bash

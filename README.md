@@ -4,16 +4,20 @@
 
 ## Task List
 ### Homepage
--- Write Introduction
--- Add skills and other content
+- Write Introduction
+- Add skills and other content
 
 ### Blog
--- Create Breadcrumb for better navigation
--- Allow commenting
+- Create Breadcrumb for better navigation
+- Allow commenting
 
 ### Portfolio 
--- Integrate ACF to pull portfolio details
--- Allow Filter by portfolio tags
+- Integrate ACF to pull portfolio details
+- Allow Filter by portfolio tags
+
+### Global Site Wishlist
+- Create sidebar component
+- Create contact page with working contact form
 
 ## Build Setup
 

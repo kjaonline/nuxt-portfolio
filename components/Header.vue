@@ -12,13 +12,13 @@
 						<nuxt-link @click.native="hideNav" to="/">Home</nuxt-link>
 					</li>
 					<li>
-						<nuxt-link @click.native="hideNav" to="about">About</nuxt-link>
+						<nuxt-link @click.native="hideNav" to="/about">About</nuxt-link>
 					</li>
 					<li>
-						<nuxt-link @click.native="hideNav" to="portfolio">Portfolio</nuxt-link>
+						<nuxt-link @click.native="hideNav" to="/portfolio">Portfolio</nuxt-link>
 					</li>
 					<li>
-						<nuxt-link @click.native="hideNav" to="blog">Blog</nuxt-link>
+						<nuxt-link @click.native="hideNav" to="/blog">Blog</nuxt-link>
 					</li>
 					<li>
 						<nuxt-link @click.native="hideNav" to="resume">Resume</nuxt-link>

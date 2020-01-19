@@ -1,19 +1,23 @@
 # kris-alcordo-portfolio
 
-> Kris Alcordo&#39;s Portfolio built on Nuxt, Ghost and cool fingers.
+> Kris Alcord's Portfolio built on Nuxt and using Wordpress and ACF as a headless CMS. This site will showcase his portfolio, experience and means to contact and collaborate.
 
 ## Task List
 ### Homepage
--- Write Introduction
--- Add skills and other content
+- Write Introduction
+- Add skills and other content
 
 ### Blog
--- Create Breadcrumb for better navigation
--- Allow commenting
+- Create Breadcrumb for better navigation
+- Allow commenting
 
 ### Portfolio 
--- Integrate ACF to pull portfolio details
--- Allow Filter by portfolio tags
+- Integrate ACF to pull portfolio details
+- Allow Filter by portfolio tags
+
+### Global Site Wishlist
+- Create sidebar component
+- Create contact page with working contact form
 
 ## Build Setup
 

@@ -1,0 +1,10 @@
+@mixin siteWidth($opt: false){
+	margin: 0 auto;
+	display: block;
+	
+	@if($opt) {
+		max-width: $opt
+	} @else {
+		max-width: 1600px
+	}
+}

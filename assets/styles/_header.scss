@@ -1,4 +1,3 @@
-
 .header {
   text-align: center;
   font-weight: bold;
@@ -7,38 +6,50 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  .header-text {
-	  padding:20px;
+  a {
+    text-decoration: none;
   }
-  .nav-container{
+
+  .header-text {
+    padding: 20px;
+  }
+
+  .nav-container {
     position: absolute;
     top: 0;
     left: 0;
   }
+
   .nav {
-    position: relative;    
+    position: relative;
     height: 30px;
     width: 30px;
-	cursor: pointer;
-	top: 10px;
-	left: 10px;
-	z-index: 10;
+    cursor: pointer;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+
     &.active {
       span {
-		top: 10px;
-		background: #fff;
-        &:nth-child(1){
-        transform: rotate(45deg);position: absolute;
-      }
-      &:nth-child(2) {
-        display: none;
-      }
-      &:nth-child(3){
-        transform: rotate(-45deg);position: absolute;
-      }
+        top: 10px;
+        background: #fff;
+
+        &:nth-child(1) {
+          transform: rotate(45deg);
+          position: absolute;
+        }
+
+        &:nth-child(2) {
+          display: none;
+        }
+
+        &:nth-child(3) {
+          transform: rotate(-45deg);
+          position: absolute;
+        }
       }
     }
+
     span {
       display: block;
       margin-bottom: 5px;
@@ -47,38 +58,54 @@
       height: 5px;
       background: $dark;
       transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      
+
     }
   }
+
   .nav-links {
-	  height: 100vh;
-	  position: fixed;
-	  top: 0;
-	  left: -300px;
-	  text-align: left;
-	  width: 300px;
-	  z-index: 9;
-	  background: rgba($color4, .9);
-	  transition: 0.5s all;
-	  padding: 10px;
-	  &.active {
-		left: 0;
-	  }
-	  ul {
-		  list-style-type: none;
-		  margin: 50px 0 0 0;
-		  padding: 0;
-	  }
-	  li {
-		  margin-bottom: 25px;
-	  }
-	  a {
-		  text-decoration: none;
-		  color: #fff;
-		  font-size: 1.5em;
-	  }
-	  
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    text-align: left;
+    width: 300px;
+    z-index: 9;
+    background: rgba($color4, .9);
+    transition: 0.5s all;
+    padding: 10px;
+    .nav-links-closer {
+      position: fixed;
+      left: calc(-100vw + 300px);
+      width: calc(100vw - 300px);
+      top: 0;
+      height: 100%;
+    }
+
+    &.active {
+      left: 0;
+      .nav-links-closer {
+        left: 300px;
+      }
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 50px 0 0 0;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 25px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.5em;
+    }
+
   }
+
   h1 {
     color: $dark;
     font-weight: bold;

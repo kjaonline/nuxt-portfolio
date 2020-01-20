@@ -7,6 +7,9 @@
 				<span></span>
 			</div>
 			<div class="nav-links" v-bind:class="{active: isActive}">
+				<div v-on:click="activeNav" class="nav-links-closer">
+
+				</div>
 				<ul>
 					<li>
 						<nuxt-link @click.native="hideNav" to="/">Home</nuxt-link>
@@ -27,7 +30,7 @@
 			</div>
       </div>
       <div class="header-text">
-		  <h1>Kris Alcordo</h1>
+		<nuxt-link to="/"><h1>Kris Alcordo</h1></nuxt-link>
 	  </div>
   </div>
 </template>

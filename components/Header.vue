@@ -49,11 +49,12 @@ export default {
 			this.isActive = false;
 		},
 		...mapActions([
-			'getBlogPostsAction'
+			'getBlogPostsAction', 'getPortfolioAction'
 		])
 	},
 	mounted() {
 		this.getBlogPostsAction();
+		this.getPortfolioAction();
 	}
 }
 </script>

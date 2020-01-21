@@ -55,7 +55,7 @@
       margin-bottom: 5px;
       width: 100%;
       border-radius: 5px;
-      height: 5px;
+      height: 4px;
       background: $dark;
       transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
@@ -90,18 +90,18 @@
 
     ul {
       list-style-type: none;
-      margin: 50px 0 0 0;
+      margin: 50px 0 0 30px;
       padding: 0;
     }
 
     li {
-      margin-bottom: 25px;
+      margin-bottom: 15px;
     }
 
     a {
       text-decoration: none;
       color: #fff;
-      font-size: 1.5em;
+      font-size: 1.1em;
     }
 
   }

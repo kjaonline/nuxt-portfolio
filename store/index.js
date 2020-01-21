@@ -22,7 +22,7 @@ export const actions = {
 				data: {
 					query: `query MyQuery {
 						__typename
-						posts {
+						posts(where: {categoryName: "featured"}) {
 						  edges {
 							node {
 							  id
@@ -30,10 +30,18 @@ export const actions = {
 							  date
 							  excerpt
 							  slug
+							  categories {
+								edges {
+								  node {
+									id
+									slug
+								  }
+								}
+							  }
 							}
 						  }
 						}
-					  }
+					  }									
 					`
 				}	
 			})
@@ -50,24 +58,31 @@ export const actions = {
 				url: "https://api.krisalcordo.com/graphql",
 				data: {
 					query: `query MyQuery {
-						portfolio {
+						__typename
+						posts(where: {categoryName: "portfolio"}) {
 						  edges {
 							node {
 							  id
 							  title
-							  slug
 							  date
-							  featuredImage {
-								mediaItemUrl
+							  excerpt
+							  slug
+							  categories {
+								edges {
+								  node {
+									id
+									slug
+								  }
+								}
 							  }
 							}
 						  }
 						}
-					  }
+					  }  
 					`
 				}
 			})
-			let data = result.data.data.portfolio.edges;
+			let data = result.data.data.posts.edges;
 			context.commit('SETPORTFOLIO', data)
 		} catch (error) {
 			console.error(error)

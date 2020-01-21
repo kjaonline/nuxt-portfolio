@@ -1,5 +1,9 @@
 <template>
   <div v-bind:class="{ loaded: loaded }" class="single-post">
+    <breadcrumb 
+		type="Blog"
+		v-bind:slug=slug
+		/>
     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
     <div class="post-content">
       <h1>{{title}}</h1>
@@ -12,16 +16,20 @@
 
 <script>
 import axios from 'axios'
+import breadcrumb from '@/components/Breadcrumb'
 
 export default {
    data: function () {
     return {
       loaded: false,
-      slug: '',
-      title: '',
-      content: '',
+      slug: String,
+      title: String,
+      content: String,
       categories: []
     }
+  },
+  components: {
+    breadcrumb
   },
   methods: {
     async getPostData() {
@@ -62,7 +70,7 @@ export default {
   mounted(){
     this.getPostData(),
     this.slug = this.$route.params.slug;
-    console.log(this.$route.params.slug);
+    
   }
 }
 

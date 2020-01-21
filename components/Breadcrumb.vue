@@ -1,42 +1,32 @@
 <template>
-  <div class="crumb">
-      {{links}}
-        <ul>
-            <li v-for="(link, index) in links" v-bind:key="index">
-               <router-link to="">{{link}}</router-link>
-            </li>
-        </ul>
-  </div>
+  <ul class="bread-crumb">
+      <li>
+          <i class="fas fa-home"></i>
+      </li>
+      <li>
+          /
+      </li>
+      <li>
+          {{ type }}
+      </li>
+      <li>
+          /
+      </li>
+      <li>
+          {{ slug }}
+      </li>
+  </ul>
 </template>
 
 <script>
 export default {
-    data: function(){
-        return {
-            links: Array
-        }
-    },
-    methods :{
-        convertString(link) {
-            let linkArray = link.split('/')
-            let returnArray = []
-            linkArray.forEach(element => {
-                if(element !== "") {
-                    returnArray.push(element)
-                }
-            });
-            // console.log(linkArray)
-            
-            return returnArray
-        }
-    },
-    mounted() {
-        this.links = this.convertString(window.location.pathname);
-        console.log(this.links)
-    }
+    props: [
+        'type',
+        'slug'
+    ]
 }
 </script>
 
 <style>
-    
+
 </style>

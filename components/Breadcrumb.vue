@@ -13,7 +13,7 @@
           /
       </li>
       <li>
-          {{ slug }}
+          {{ currentpage }}
       </li>
   </ul>
 </template>
@@ -22,7 +22,7 @@
 export default {
     props: [
         'type',
-        'slug'
+        'currentpage'
     ]
 }
 </script>

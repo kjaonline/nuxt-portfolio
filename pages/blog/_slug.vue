@@ -2,7 +2,7 @@
   <div v-bind:class="{ loaded: loaded }" class="single-post">
     <breadcrumb 
 		type="Blog"
-		v-bind:slug=slug
+		v-bind:currentpage=title
 		/>
     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
     <div class="post-content">
@@ -22,9 +22,9 @@ export default {
    data: function () {
     return {
       loaded: false,
-      slug: String,
-      title: String,
-      content: String,
+      slug: '',
+      title: '',
+      content: '',
       categories: []
     }
   },

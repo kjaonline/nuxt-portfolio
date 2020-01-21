@@ -2,7 +2,7 @@
 	<div v-bind:class="{ loaded: loaded }" class="single-post">
 		<breadcrumb 
 		type="Portfolio"
-		v-bind:slug=slug
+		v-bind:currentpage=title
 		/>
 		<div class="lds-ring">
 			<div></div>
@@ -24,9 +24,9 @@ import breadcrumb from '@/components/Breadcrumb'
 		data: function() {
 			return {
 				loaded: false,
-				title: String,
-				content: String,
-				slug: String
+				title: '',
+				content: '',
+				slug: ''
 			}
 		},
 		components: {

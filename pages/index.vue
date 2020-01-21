@@ -15,7 +15,8 @@
       <Posts />
     </div>
     <div class="right">
-      
+      <h2>Portfolio Items</h2>
+      <Portfolio />
     </div>
   </div>
  </div>
@@ -24,10 +25,11 @@
 <script>
 
 import Posts from '@/components/Bloglist'
+import Portfolio from '@/components/Portfoliolist'
 
 export default {
   components: {
-    Posts
+    Posts, Portfolio
   }  
 }
 </script>

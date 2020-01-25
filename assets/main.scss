@@ -12,6 +12,11 @@ html {
     color: $fontColor;
 }
 
+
+.no-hero {
+	padding: 10px;
+}
+
 .page-enter-active, .page-leave-active {
 	transition: opacity .5s;
 }
@@ -26,4 +31,5 @@ html {
 	 padding: 10px;
 	 display: block;
 }
+
 

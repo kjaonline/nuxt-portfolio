@@ -14,9 +14,9 @@
 					<li>
 						<nuxt-link @click.native="hideNav" to="/">Home</nuxt-link>
 					</li>
-					<li>
+					<!-- <li>
 						<nuxt-link @click.native="hideNav" to="/about">About</nuxt-link>
-					</li>
+					</li> -->
 					<li>
 						<nuxt-link @click.native="hideNav" to="/portfolio">Portfolio</nuxt-link>
 					</li>
@@ -52,12 +52,13 @@ export default {
 			this.isActive = false;
 		},
 		...mapActions([
-			'getBlogPostsAction', 'getPortfolioAction'
+			'getBlogPostsAction', 'getPortfolioAction', 'getTagsAction'
 		])
 	},
 	mounted() {
-		this.getBlogPostsAction();
-		this.getPortfolioAction();
+		this.getBlogPostsAction()
+		this.getPortfolioAction()
+		this.getTagsAction()
 	}
 }
 </script>

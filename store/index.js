@@ -2,7 +2,8 @@ import axios from 'axios'
 
 export const state = () => ({
 	posts: Object,
-	portfolio: Object
+	portfolio: Object,
+	tags: Object
 })
 export const mutations = {
     SETPOSTS(state, value){
@@ -10,6 +11,9 @@ export const mutations = {
 	},
 	SETPORTFOLIO(state, value) {
 		state.portfolio = value	
+	},
+	SETTAGS(state, value) {
+		state.tags = value
 	}
 }
 export const actions = {
@@ -38,10 +42,14 @@ export const actions = {
 								  }
 								}
 							  }
+							  featuredImage {
+								mediaItemUrl
+							  }
 							}
 						  }
 						}
-					  }									
+					  }
+												  
 					`
 				}	
 			})
@@ -75,16 +83,46 @@ export const actions = {
 								  }
 								}
 							  }
+							  featuredImage {
+								mediaItemUrl
+							  }
 							}
 						  }
 						}
-					  }  
+					  }
+					   
 					`
 				}
 			})
 			let data = result.data.data.posts.edges;
 			context.commit('SETPORTFOLIO', data)
 		} catch (error) {
+			console.error(error)
+		}
+	},
+	async getTagsAction(context) {
+		try {
+			let result = await axios({
+				method: "POST",
+				url: "https://api.krisalcordo.com/graphql",
+				data: {
+					query: `query MyQuery {
+						tags {
+						  edges {
+							node {
+							  id
+							  name
+							}
+						  }
+						}
+					  }
+					`
+				}
+			})
+			let data = result.data.data.tags.edges;
+			// console.log(result.data.data.tags.edges)
+			context.commit('SETTAGS', data)
+		} catch(error) {
 			console.error(error)
 		}
 	}

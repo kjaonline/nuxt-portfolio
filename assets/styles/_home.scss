@@ -47,9 +47,47 @@
 		h2 {
 			font-weight: normal;
 		}
+		p {
+			max-width: 700px;
+			margin: 20px auto 0;
+			display: block;
+			line-height: 1.5;
+		}
+	}
+}
+
+.skills {
+	@include siteWidth;
+	padding: 10px;
+	h2 {
+		position: relative;
+		display: block;
+		&::after{
+			content: '';
+			height: 1px;
+			border-bottom: 1px dotted #c2c2c2;
+			width: 100%;
+			position: absolute;
+			left: 0;
+			bottom: -10px;
+		}
+	}
+	.info {
+		display: flex;
+		.left {
+			width: 50%;
+		}
+		.right{
+			width: 50%;
+		}
 	}
 }
 
 .home-below-fold {
 	@include siteWidth;
+	display: flex;
+	padding: 10px;
+	>div {
+		width: 50%;
+	}
 }

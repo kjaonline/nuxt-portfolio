@@ -52,13 +52,14 @@ export default {
 			this.isActive = false;
 		},
 		...mapActions([
-			'getBlogPostsAction', 'getPortfolioAction', 'getTagsAction'
+			'getBlogPostsAction', 'getPortfolioAction', 'getTagsAction','populateResumeAction'
 		])
 	},
 	mounted() {
 		this.getBlogPostsAction()
 		this.getPortfolioAction()
 		this.getTagsAction()
+		this.populateResumeAction()
 	}
 }
 </script>

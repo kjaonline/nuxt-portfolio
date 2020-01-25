@@ -1,9 +1,10 @@
 import axios from 'axios'
 
 export const state = () => ({
-	posts: Object,
-	portfolio: Object,
-	tags: Object
+	posts: '',
+	portfolio: '',
+	tags: '',
+	resume: ''
 })
 export const mutations = {
     SETPOSTS(state, value){
@@ -14,6 +15,9 @@ export const mutations = {
 	},
 	SETTAGS(state, value) {
 		state.tags = value
+	},
+	SETRESUME(state, value) {
+		state.resume = value
 	}
 }
 export const actions = {
@@ -123,6 +127,41 @@ export const actions = {
 			// console.log(result.data.data.tags.edges)
 			context.commit('SETTAGS', data)
 		} catch(error) {
+			console.error(error)
+		}
+	},
+	async populateResumeAction(context) {
+		try {
+			let result = await axios({
+				method: "POST",
+				url: "https://api.krisalcordo.com/graphql",
+				data: {
+					query: `query MyQuery {
+						pageBy(pageId: 35) {
+							id
+							resume {
+							job {
+								active
+								company
+								jobDescription
+								jobEnd
+								jobLocation
+								jobStart
+								jobTitle
+								jobType
+								fieldGroupName
+							}
+							fieldGroupName
+							}
+						}
+						}
+					`
+				}
+			})
+			// console.log(result.data.data.pageBy.resume.job)
+			let data = result.data.data.pageBy.resume.job
+			context.commit('SETRESUME',data)
+		} catch (error) {
 			console.error(error)
 		}
 	}

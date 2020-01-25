@@ -4,6 +4,7 @@
 		type="Blog"
 		v-bind:currentpage=title
 		/>
+    
     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
     <div class="post-content">
       <h1>{{title}}</h1>

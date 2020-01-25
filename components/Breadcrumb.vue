@@ -20,11 +20,6 @@
 
 <script>
 export default {
-    data: function(){
-        return {
-            link: ''
-        }
-    },
     props: [
         'type',
         'currentpage'
@@ -32,12 +27,27 @@ export default {
     methods: {
         changePage() {
             this.$router.push({name: this.type.toLowerCase()})
-            console.log(this.type.toLowerCase())
         }
     }
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+    .bread-crumb {
+		list-style-type: none;
+		display: flex;
+		margin: 0;
+		padding: 0;
+		li {
+			margin: 0 5px;
+			color: hsla(148%, 6%, 52%, 1);;
+			span {
+				cursor: pointer;
+			}
+			a {
+				color: hsla(148%, 6%, 52%, 1);;
+				font-style: none;
+			}
+		}
+	}
 </style>

@@ -3,7 +3,7 @@
    <div class="home-hero">
       <div class="text">
         <h1>Web Developer in Jacksonville Florida</h1>
-        <p>I am a web developer with {{ years }} years of experience. In 2016, I decided to pursue a career in Web Development after a very succesful decade in Internet Marketing. After months of self-teaching, I finally landed my first web developer job in 2018.</p>
+        <p>I am a web developer with {{ years }} years of experience. After a very succesful decade in Internet Marketing, I decided to pursue a career in Web Development in 2016. Months of self-teaching, self-loathing and eventually enlightenment lead to my first Web developer Job in 2018.</p>
         <div class="links">
           
         </div>
@@ -12,17 +12,7 @@
         <img src="~/assets/static/homebg.jpg" alt="" srcset="">
       </div>
   </div>
-  <!-- <div class="skills">
-    <h2>Skills</h2>
-    <div class="info">
-      <div class="left">
-
-      </div>
-      <div class="right">
-        
-      </div>
-    </div>
-  </div> -->
+  <Resume />
   <div class="home-below-fold">
     <div class="left">
       <h2>Blog Posts</h2>
@@ -40,10 +30,10 @@
 
 import Posts from '@/components/Bloglist'
 import Portfolio from '@/components/Portfoliolist'
-
+import Resume from '@/components/Resume'
 export default {
   components: {
-    Posts, Portfolio
+    Posts, Portfolio, Resume
   },
   data: function(){
     return {

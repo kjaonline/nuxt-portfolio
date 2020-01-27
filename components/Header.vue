@@ -55,7 +55,7 @@ export default {
 			'getBlogPostsAction', 'getPortfolioAction', 'getTagsAction','populateResumeAction'
 		])
 	},
-	mounted() {
+	created() {
 		this.getBlogPostsAction()
 		this.getPortfolioAction()
 		this.getTagsAction()

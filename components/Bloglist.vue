@@ -27,7 +27,7 @@ export default {
     },
     
     mounted(){
-        this.posts
+        // this.posts
     }
 }
 </script>

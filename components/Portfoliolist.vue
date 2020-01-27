@@ -18,7 +18,7 @@ export default {
         ])
     },
     mounted(){
-        this.portfolio
+        // this.portfolio
     }
 }
 </script>

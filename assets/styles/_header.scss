@@ -3,21 +3,25 @@
   font-weight: bold;
   text-transform: uppercase;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   a {
     text-decoration: none;
   }
 
   .header-text {
     padding: 20px;
+    text-align: left;
+    margin-left: 30px;
+    h1{ 
+      margin: 0;
+      line-height: 1;
+    }
   }
 
   .nav-container {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 15px;
+    right: 30px;
   }
 
   .nav {
@@ -66,7 +70,7 @@
     height: 100vh;
     position: fixed;
     top: 0;
-    left: -300px;
+    right: -300px;
     text-align: left;
     width: 300px;
     z-index: 9;
@@ -75,16 +79,16 @@
     padding: 10px;
     .nav-links-closer {
       position: fixed;
-      left: calc(-100vw + 300px);
+      right: calc(-100vw + 300px);
       width: calc(100vw - 300px);
       top: 0;
       height: 100%;
     }
 
     &.active {
-      left: 0;
+      right: 0;
       .nav-links-closer {
-        left: 300px;
+        right: 300px;
       }
     }
 

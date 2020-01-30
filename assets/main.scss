@@ -7,7 +7,7 @@
 @import 'styles/single';
 
 html {
-    font-family: 'Karla', sans-serif;
+    font-family: 'Muli', sans-serif;;
     background: $white;
     color: $fontColor;
 }
@@ -15,6 +15,11 @@ html {
 
 .no-hero {
 	padding: 10px;
+	height: auto;
+	display: block;
+	h1 {
+		text-align: left;
+	}
 }
 
 .page-enter-active, .page-leave-active {

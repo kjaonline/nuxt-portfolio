@@ -13,7 +13,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i&display=swap'}
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap'}
     ],
     script: [
       {src: 'https://kit.fontawesome.com/4c7460a2a8.js'}

@@ -45,7 +45,7 @@ export default {
 <style lang="scss" scoped>
     
     .resume {
-        padding: 50px 20px;
+        padding: 50px;
         margin: 50px auto;
         background: #f5f5f5;
         display: block;

@@ -5,12 +5,21 @@
 	</div>
 	<div class="posts">
 		<div class="post" v-for="post in posts" v-bind:key="post.id" @click="yolo(post.slug)">
-			<div class="img-container">
+			<div v-if="post.featuredImage != null" class="img-container">
 				<img v-bind:src="post.featuredImage.mediaItemUrl">
+			</div>
+			<div v-else class="img-container">
+				<img src="https://api.krisalcordo.com/wp-content/uploads/2019/11/Screenshot.png" alt="">
 			</div>
 			
 			<div class="text">
 				<h2>{{post.title}}</h2>
+				<div class="date">{{$moment(post.date).format('MM/DD/YYYY')}}</div>
+				<div class="categories">
+					<span v-for="category in post.categories.edges"  v-bind:key="category.node.id">
+						{{category.node.name}}
+					</span>
+				</div>
 				<div class="excerpt" v-html="post.excerpt"></div>
 			</div>
 		</div>
@@ -95,13 +104,21 @@ export default {
 	.posts{
 		display: flex;
 		justify-content: center;
+		flex-wrap: wrap
 	}
 	.post {
 		width: calc(100% / 3 - 30px);
 		margin: 15px;
+		min-width: 300px;
 		cursor: pointer;
 		.text {
 			padding: 0 10px;
+			.categories {
+				display: flex;
+				span {
+					margin: 3px 3px 0 0;
+				}
+			}
 		}
 		.img-container {
 			overflow: hidden;

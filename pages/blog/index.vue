@@ -4,7 +4,7 @@
 		<h1>Blog Posts</h1>
 	</div>
 	<div class="posts">
-		<div class="post" v-for="post in posts" v-bind:key="post.id">
+		<div class="post" v-for="post in posts" v-bind:key="post.id" @click="yolo(post.slug)">
 			<div class="img-container">
 				<img v-bind:src="post.featuredImage.mediaItemUrl">
 			</div>
@@ -60,7 +60,8 @@ export default {
 								}
 								excerpt(format: RENDERED)
 								id
-								}
+								slug
+			 					}
 								edges {
 								node {
 									id
@@ -68,7 +69,6 @@ export default {
 								}
 							}
 						}
-
 						`
 					}
 				})
@@ -78,6 +78,11 @@ export default {
 			} catch(error) {
 				console.error(error)
 			}
+		},
+		yolo(slug) {
+			console.log(slug)
+			console.log(this.$route.fullPath)
+			this.$router.push({name: this.$route.fullPath + '/' + slug})
 		}
 	},
 	mounted() {
@@ -94,6 +99,7 @@ export default {
 	.post {
 		width: calc(100% / 3 - 30px);
 		margin: 15px;
+		cursor: pointer;
 		.text {
 			padding: 0 10px;
 		}

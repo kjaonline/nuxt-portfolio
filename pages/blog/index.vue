@@ -82,7 +82,7 @@ export default {
 		yolo(slug) {
 			console.log(slug)
 			console.log(this.$route.fullPath)
-			this.$router.push({name: this.$route.fullPath + '/' + slug})
+			this.$router.push({path:'blog/' + slug})
 		}
 	},
 	mounted() {

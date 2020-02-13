@@ -7,18 +7,21 @@
 				<span></span>
 			</div>
 			<div class="nav-links" v-bind:class="{active: isActive}">
+				<div v-on:click="activeNav" class="nav-links-closer">
+
+				</div>
 				<ul>
 					<li>
 						<nuxt-link @click.native="hideNav" to="/">Home</nuxt-link>
 					</li>
+					<!-- <li>
+						<nuxt-link @click.native="hideNav" to="/about">About</nuxt-link>
+					</li> -->
 					<li>
-						<nuxt-link @click.native="hideNav" to="about">About</nuxt-link>
+						<nuxt-link @click.native="hideNav" to="/portfolio">Portfolio</nuxt-link>
 					</li>
 					<li>
-						<nuxt-link @click.native="hideNav" to="portfolio">Portfolio</nuxt-link>
-					</li>
-					<li>
-						<nuxt-link @click.native="hideNav" to="blog">Blog</nuxt-link>
+						<nuxt-link @click.native="hideNav" to="/blog">Blog</nuxt-link>
 					</li>
 					<li>
 						<nuxt-link @click.native="hideNav" to="resume">Resume</nuxt-link>
@@ -27,12 +30,14 @@
 			</div>
       </div>
       <div class="header-text">
-		  <h1>Client Site</h1>
+		<nuxt-link to="/"><h1>Kris Alcordo</h1></nuxt-link>
 	  </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import axios from 'axios'
 export default {
     data: function () {
         return {
@@ -45,8 +50,17 @@ export default {
 		},
 		hideNav: function(){
 			this.isActive = false;
-		}
-    }
+		},
+		...mapActions([
+			'getBlogPostsAction', 'getPortfolioAction', 'getTagsAction','populateResumeAction'
+		])
+	},
+	created() {
+		this.getBlogPostsAction()
+		this.getPortfolioAction()
+		this.getTagsAction()
+		this.populateResumeAction()
+	}
 }
 </script>
 

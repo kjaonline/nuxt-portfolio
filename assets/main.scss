@@ -1,13 +1,34 @@
 @import 'styles/normalize';
 @import 'styles/palette';
+@import 'styles/mixins';
 @import 'styles/footer';
 @import 'styles/header';
 @import 'styles/home';
+@import 'styles/single';
 
 html {
-    font-family: 'Karla', sans-serif;
+    font-family: 'Muli', sans-serif;;
     background: $white;
     color: $fontColor;
+}
+
+
+.no-hero {
+	padding: 10px;
+	height: auto;
+	display: block;
+	h1 {
+		text-align: center;
+		font-weight: 900;
+		text-transform: uppercase;
+	}
+}
+
+.page-enter-active, .page-leave-active {
+	transition: opacity .5s;
+}
+.page-enter, .page-leave-to {
+	opacity: 0;
 }
 
 .content-container {
@@ -17,3 +38,5 @@ html {
 	 padding: 10px;
 	 display: block;
 }
+
+

@@ -1,45 +1,45 @@
 <template>
-  <div v-bind:class="{ loaded: loaded }" class="single-post">
-    <breadcrumb 
-		type="Blog"
-		v-bind:currentpage=title
-		/>
-    
-    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  <div v-bind:class="{ loaded: loaded }"  class="single-post">
+    <breadcrumb type="Blog" v-bind:currentpage=title />
+
+    <div v-bind:class="{ loaded: loaded }" class="loader">
+		<Loader />
+    </div>
     <div class="post-content">
       <h1>{{title}}</h1>
       <div class="categories">
       </div>
       <div v-html="content"></div>
-      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-import breadcrumb from '@/components/Breadcrumb'
+  import axios from 'axios'
+  import breadcrumb from '@/components/Breadcrumb'
+  import Loader from '@/components/Loader'
 
-export default {
-   data: function () {
-    return {
-      loaded: false,
-      slug: '',
-      title: '',
-      content: '',
-      categories: []
-    }
-  },
-  components: {
-    breadcrumb
-  },
-  methods: {
-    async getPostData() {
-     try {
-       let result = await axios({
-         method: "POST",
-         url: "https://api.krisalcordo.com/graphql",
-         data: {
-           query: `query MyQuery($slug: String!) {
+  export default {
+    data: function () {
+      return {
+        loaded: false,
+        slug: '',
+        title: '',
+        content: '',
+        categories: []
+      }
+    },
+    components: {
+      breadcrumb, Loader
+    },
+    methods: {
+      async getPostData() {
+        try {
+          let result = await axios({
+            method: "POST",
+            url: "https://api.krisalcordo.com/graphql",
+            data: {
+              query: `query MyQuery($slug: String!) {
               postBy(slug: $slug ) {
                 id
                 title
@@ -55,28 +55,30 @@ export default {
               }
             }
            `,
-           variables: {slug: this.$route.params.slug }
-         }
-       })
-       this.title = await result.data.data.postBy.title
-       this.content = await result.data.data.postBy.content
-       this.categories = await result.data.data.postBy.categories.edges
-       this.loaded = true
-     } catch(error) {
-       console.log(error)
-     }
+              variables: {
+                slug: this.$route.params.slug
+              }
+            }
+          })
+          this.title = await result.data.data.postBy.title
+          this.content = await result.data.data.postBy.content
+          this.categories = await result.data.data.postBy.categories.edges
+          this.loaded = true
+        } catch (error) {
+          console.log(error)
+        }
+      }
+
+    },
+    mounted() {
+      this.getPostData(),
+        this.slug = this.$route.params.slug;
+
     }
-    
-  },
-  mounted(){
-    this.getPostData(),
-    this.slug = this.$route.params.slug;
-    
   }
-}
 
 </script>
 
 <style lang="scss" scoped>
- 
+
 </style>

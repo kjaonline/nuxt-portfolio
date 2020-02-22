@@ -12,6 +12,11 @@
 	align-items: center;
 	position: relative;
 	overflow: hidden;
+	a {
+		color: #fff;
+		font-weight: bold;
+		text-decoration: none;
+	}
 
 	.image {
 		width: 100%;
@@ -39,11 +44,12 @@
 	
 
 	.text {
-		text-align: center;
+		// text-align: center;
 		position: relative;
 		z-index: 2;
 		color: #fff;
 		h1 {
+			text-align: center;
 			span {
 				font-weight: 900;
 				font-size: 2em;
@@ -61,6 +67,60 @@
 			line-height: 1.5;
 		}
 	}
+}
+
+.below-content {
+	display: flex;
+	max-width: 1200px;
+	margin: 0 auto;
+	width: 100%;
+
+	.blocks {
+		width: 30%;
+	}
+	.resume {
+        padding: 30px;
+        margin: 10px;
+		background: #f5f5f5;
+		width: 70%;
+
+        .view-full {
+            margin: 30px auto 0;
+            text-align: center;
+        }
+
+        &-header {
+            h2 {
+                font-weight: bold;
+                text-transform: uppercase;
+                font-size: 1.2em;
+            }
+        }
+      
+        .date {
+            font-style: italic;
+        }
+        h2, h3 {
+            margin: 0;
+            line-height: 1.1;
+        }
+        h3 {
+            font-weight: normal;
+        }
+        
+        .job {
+            padding-bottom: 30px;
+            border-bottom: 1px dotted rgb(206, 206, 206);
+            
+            &:nth-child(n + 2) {
+                margin-top: 30px;
+            }
+             &:last-child{
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+        }
+    }
 }
 
 .skills {
@@ -87,14 +147,5 @@
 		.right{
 			width: 50%;
 		}
-	}
-}
-
-.home-below-fold {
-	@include siteWidth;
-	display: flex;
-	padding: 10px;
-	>div {
-		width: 50%;
 	}
 }

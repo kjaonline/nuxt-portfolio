@@ -12,7 +12,7 @@
             </div>
       </div>
       <div class="view-full">
-         Please <nuxt-link to="/about">click here</nuxt-link> for non developer job history.
+         Please <nuxt-link to="/about">click here</nuxt-link> for my full resume.
       </div>
   </div>
 </template>
@@ -44,50 +44,6 @@ export default {
 
 <style lang="scss" scoped>
     
-    .resume {
-        padding: 50px;
-        margin: 50px auto;
-        background: #f5f5f5;
-        display: block;
-        max-width: 1600px;
-        width: calc(100% - 10px);
-
-        .view-full {
-            margin: 30px auto 0;
-            text-align: center;
-        }
-
-        &-header {
-            h2 {
-                font-weight: bold;
-                text-transform: uppercase;
-                font-size: 1.2em;
-            }
-        }
-      
-        .date {
-            font-style: italic;
-        }
-        h2, h3 {
-            margin: 0;
-            line-height: 1.1;
-        }
-        h3 {
-            font-weight: normal;
-        }
-        
-        .job {
-            padding-bottom: 30px;
-            border-bottom: 1px dotted rgb(206, 206, 206);
-            
-            &:nth-child(n + 2) {
-                margin-top: 30px;
-            }
-             &:last-child{
-                padding-bottom: 0;
-                border-bottom: none;
-            }
-        }
-    }
+    
    
 </style>

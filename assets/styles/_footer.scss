@@ -1,12 +1,20 @@
 .footer {
   background: $color3;
-  padding: 10px;
+  padding: 50px 10px;
   text-align: center;
+  color: #fff;
+  .cta {
+    width: 100%;
+  }
+  .icons {
+    display: flex;
+  }
   .links {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.5em;
+    flex-wrap: wrap;
     i {
       margin: 0 5px;
       color: #fff;

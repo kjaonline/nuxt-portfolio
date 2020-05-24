@@ -1,5 +1,6 @@
 <template>
-  <div class="content-container">
+  <div v-bind:class="{ loaded: loaded }" class="content-container">
+	<Loader />
 	<div class="no-hero home-hero">
 		<h1>Blog Posts</h1>
 	</div>
@@ -29,11 +30,16 @@
 
 <script>
 import axios from 'axios'
+import Loader from '@/components/Loader'
 
 export default {
+	components: {
+		Loader
+	},
 	data: function() {
 		return{
-			posts: {}
+			posts: {},
+			loaded: false
 		}
 	},
 	methods: {
@@ -96,11 +102,19 @@ export default {
 	},
 	mounted() {
 		this.getPosts()
+	},
+	updated() {
+		this.loaded = true
 	}
 	
 }
 </script>
 <style lang="scss" scoped>
+
+	.content-container {
+		min-height: 500px;
+		position: relative;
+	}
 	.posts{
 		display: flex;
 		justify-content: center;

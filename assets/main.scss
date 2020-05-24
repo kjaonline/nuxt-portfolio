@@ -40,3 +40,11 @@ html {
 }
 
 
+.loaded {
+	.lds-ring {
+		// display: none;
+		visibility: hidden!important;
+		opacity: 0!important;
+	}
+}
+

@@ -2,9 +2,7 @@
   <div v-bind:class="{ loaded: loaded }"  class="single-post">
     <breadcrumb type="Blog" v-bind:currentpage=title />
 
-    <div v-bind:class="{ loaded: loaded }" class="loader">
-		<Loader />
-    </div>
+   <Loader />
     <div class="post-content">
       <h1>{{title}}</h1>
       <div class="categories">
@@ -71,14 +69,16 @@
 
     },
     mounted() {
-      this.getPostData(),
+      	this.getPostData(),
         this.slug = this.$route.params.slug;
-
-    }
+	}
   }
 
 </script>
 
 <style lang="scss" scoped>
-
+	.single-post {
+		min-height: 500px;
+		position: relative;
+	}
 </style>

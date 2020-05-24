@@ -5,7 +5,7 @@
 		<h1><span>Kris Alcordo </span> <br> Web Developer Jacksonville, Florida</h1>
 		<p>I am a web developer with {{ years }} years of experience. After a very succesful decade in Internet
 		  Marketing, I decided to pursue a career in Web Development in 2016. Months of self-teaching, self-loathing and
-		  eventually, proficiency, lead to my first Web developer Job in 2018. <nuxt-link to="/about">Found Out More</nuxt-link></p>
+		  eventually, proficiency, lead to my first Web developer Job in 2018. <nuxt-link to="/about">Find Out More</nuxt-link></p>
 		  
 		<div class="links">
 

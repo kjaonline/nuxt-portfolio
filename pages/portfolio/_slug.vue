@@ -1,5 +1,6 @@
 <template>
 	<div v-bind:class="{ loaded: loaded }" class="single-post">
+		<Loader />
 		<breadcrumb 
 		type="Portfolio"
 		v-bind:currentpage=title
@@ -20,6 +21,7 @@
 <script>
 import axios from 'axios'
 import breadcrumb from '@/components/Breadcrumb'
+import Loader from '@/components/Loader'
 	export default {
 		data: function() {
 			return {
@@ -30,7 +32,7 @@ import breadcrumb from '@/components/Breadcrumb'
 			}
 		},
 		components: {
-			breadcrumb
+			breadcrumb, Loader
 		},
 		methods: {
 			async getPortfolioData() {
@@ -64,7 +66,6 @@ import breadcrumb from '@/components/Breadcrumb'
 							variables: {slug: this.$route.params.slug }
 						}
 					})		
-					console.log(result.data.data.postBy)
 					this.title = await result.data.data.postBy.title
 					this.content = await result.data.data.postBy.content
 					this.slug = await result.data.data.postBy.slug
@@ -80,6 +81,8 @@ import breadcrumb from '@/components/Breadcrumb'
 	}
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+	.single-post {
+		min-height: 300px;
+	}
 </style>

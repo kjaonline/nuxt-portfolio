@@ -39,39 +39,10 @@ export const actions = {
 	async getPortfolioAction(context) {
 		try {
 			let result = await axios({
-				method: "POST",
-				url: "https://api.krisalcordo.com/graphql",
-				data: {
-					query: `query MyQuery {
-						__typename
-						posts(where: {categoryName: "portfolio"}) {
-						  edges {
-							node {
-							  id
-							  title
-							  date
-							  excerpt
-							  slug
-							  categories {
-								edges {
-								  node {
-									id
-									slug
-								  }
-								}
-							  }
-							  featuredImage {
-								mediaItemUrl
-							  }
-							}
-						  }
-						}
-					  }
-					   
-					`
-				}
+				method: "GET",
+				url: "https://api.krisalcordo.com/wp-json/wp/v2/portfolio"
 			})
-			let data = result.data.data.posts.edges;
+			let data = result.data;
 			context.commit('SETPORTFOLIO', data)
 		} catch (error) {
 			console.error(error)

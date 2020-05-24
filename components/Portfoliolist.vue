@@ -1,8 +1,8 @@
 <template>
   <div class="postList">
       <ul>
-         <li v-for="portfolioItem in portfolio" v-bind:key="portfolioItem.node.id">
-              <nuxt-link :to="/portfolio/ + portfolioItem.node.slug"> {{ portfolioItem.node.title }}</nuxt-link>
+         <li v-for="portfolioItem in portfolio" v-bind:key="portfolioItem.id">
+              <nuxt-link :to="/portfolio/ + portfolioItem.slug"> {{ portfolioItem.title.rendered }}</nuxt-link>
          </li>
       </ul>
   </div>

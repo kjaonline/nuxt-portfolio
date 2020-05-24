@@ -4,7 +4,8 @@ export const state = () => ({
 	posts: '',
 	portfolio: '',
 	tags: '',
-	resume: ''
+	resume: '',
+	loaded: true
 })
 export const mutations = {
     SETPOSTS(state, value){

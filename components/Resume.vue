@@ -1,5 +1,6 @@
 <template>
-  <div class="resume">
+  <div v-bind:class="{ loaded: loaded }" class="resume">
+	  <Loader />
       <div class="resume-header">
           <h2>Resume</h2>
       </div>
@@ -19,31 +20,32 @@
 
 <script>
 import { mapState } from 'vuex'
+import Loader from '@/components/Loader'
 
 export default {
+	components: {
+		Loader
+	},
     data: function() {
         return {
-            // initialJobs: this.resume,
-            devJobs: [],
-            otherJobs: []
+            // loaded: false
+			// loaded: this.$store.state.loaded
         }
     },
     computed: {
         ...mapState([
-            'resume'
-        ]),
-        viewState: function(data) {
-           console.log(data)
-        }
+            'resume', 'loaded'
+        ])
     },
     methods: {
         
-    }
+	}
 }
 </script>
 
 <style lang="scss" scoped>
-    
-    
-   
+    .resume {
+		position: relative;
+		min-height: 500px;
+	}
 </style>

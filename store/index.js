@@ -26,39 +26,11 @@ export const actions = {
 		// console.log(context)
 		try {
 			let result = await axios({
-				method: "POST",
-				url: "https://api.krisalcordo.com/graphql",
-				data: {
-					query: `query MyQuery {
-						__typename
-						posts(where: {categoryName: "featured"}) {
-						  edges {
-							node {
-							  id
-							  title
-							  date
-							  excerpt
-							  slug
-							  categories {
-								edges {
-								  node {
-									id
-									slug
-								  }
-								}
-							  }
-							  featuredImage {
-								mediaItemUrl
-							  }
-							}
-						  }
-						}
-					  }
-												  
-					`
-				}	
+				method: "GET",
+				url: "https://api.krisalcordo.com/wp-json/wp/v2/posts"
+
 			})
-			let data = result.data.data.posts.edges;
+			let data = result.data;
 			context.commit('SETPOSTS', data)
 		} catch (error) {
 			console.error(error)

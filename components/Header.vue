@@ -52,7 +52,7 @@ export default {
 			this.isActive = false;
 		},
 		...mapActions([
-			'getBlogPostsAction', 'getPortfolioAction', 'getTagsAction','populateResumeAction'
+			'getBlogPostsAction', 'getPortfolioAction', 'getTagsAction','populateResumeAction', 'populatePortfolioTagsAction'
 		])
 	},
 	created() {
@@ -60,6 +60,7 @@ export default {
 		this.getPortfolioAction()
 		this.getTagsAction()
 		this.populateResumeAction()
+		this.populatePortfolioTagsAction()
 	}
 }
 </script>

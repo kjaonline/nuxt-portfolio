@@ -5,6 +5,7 @@ export const state = () => ({
 	portfolio: '',
 	tags: '',
 	resume: '',
+	portfoliotags: '',
 	loaded: true
 })
 export const mutations = {
@@ -19,6 +20,9 @@ export const mutations = {
 	},
 	SETRESUME(state, value) {
 		state.resume = value
+	},
+	SETTPORTFOLIOAGS(state, value) {
+		state.portfoliotags = value
 	}
 }
 export const actions = {
@@ -106,6 +110,18 @@ export const actions = {
 			let data = result.data.data.pageBy.resume.job
 			context.commit('SETRESUME',data)
 		} catch (error) {
+			console.error(error)
+		}
+	},
+	async populatePortfolioTagsAction(context) {
+		try {
+			let result = await axios({
+				method: "GET",
+				url: "https://api.krisalcordo.com/wp-json/wp/v2/portfolio_categories"
+			})
+			let data = result.data
+			context.commit('SETTPORTFOLIOAGS',data)
+		} catch(error) {
 			console.error(error)
 		}
 	}

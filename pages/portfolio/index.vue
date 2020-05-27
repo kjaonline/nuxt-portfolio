@@ -6,7 +6,7 @@
       <div class="content">
         <div class="tags">
           <ul>
-            <li v-for="tag in portfoliotags" v-bind:key="tag.id" v-on:click="modifyTagsArray($event, tag.slug), modifyClasses($event);">
+            <li v-for="tag in portfoliotags" v-bind:key="tag.id" v-on:click="modifyTagsArray($event, tag.slug), modifyClasses($event), getPosts();">
               {{ tag.name }}
             </li>
           </ul>
@@ -20,6 +20,8 @@
 
 <script>
 import {mapState} from 'vuex'
+import axios from 'axios'
+
 
 export default {
   data: function() {
@@ -42,18 +44,57 @@ export default {
     },
     modifyClasses:function(event){
       event.target.classList.toggle('active')
-      console.log(this.activeTags)
+
+    },
+    getPosts: async function() {
+      let data = this.activeTags
+      let requestobject = {data}
+      try {
+        	let result = await axios({
+            method: 'get',
+            url: "https://api.krisalcordo.com/wp-json/kris_portfolio/v1/portfolio",
+            data: requestobject
+          })
+          let posts = result.data;
+          console.log('request' + requestobject)
+          console.log('====')
+          console.log('response' + posts)
+      } catch(error) {
+        console.log(error)
+      }
     }
   }
 }
 
 </script>
 
-<style>
-  .tags ul li {
-    cursor: pointer;
+<style lang="scss" scoped>
+  .content {
+    display: flex;
+    .tags {
+      width: 20%;
+    }
+    .content {
+      width: 100%;
+    }
+  }
+  .tags ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+     li {
+       cursor: pointer;
+       margin: 5px;
+       padding: 5px;
+       user-select: none;
+     }
   }
   .active{
-    background: red;
+    background: #132a13;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 5px;
   }
 </style>

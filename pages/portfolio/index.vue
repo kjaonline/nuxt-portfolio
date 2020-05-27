@@ -49,11 +49,27 @@ export default {
 
 </script>
 
-<style>
-  .tags ul li {
-    cursor: pointer;
-  }
-  .active{
-    background: red;
+<style lang="scss" scoped>
+  .tags ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px;
+    li {
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 5px;
+      user-select: none;
+      font-weight: bold;
+      border: 1px solid red;
+      margin: 5px;
+      &.active {
+        background: red;
+        color: #ffffff;
+      }
+    }
   }
 </style>

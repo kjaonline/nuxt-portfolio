@@ -48,17 +48,18 @@ export default {
     },
     getPosts: async function() {
       let data = this.activeTags
-      let requestobject = {data}
+      let requestobject = data
       try {
         	let result = await axios({
-            method: 'get',
+            method: 'post',
             url: "https://api.krisalcordo.com/wp-json/kris_portfolio/v1/portfolio",
-            data: requestobject
+            data: {'tags': requestobject }
           })
           let posts = result.data;
-          console.log('request' + requestobject)
-          console.log('====')
-          console.log('response' + posts)
+          // console.log(requestobject)
+          // console.log('====')
+          console.log(posts)
+
       } catch(error) {
         console.log(error)
       }

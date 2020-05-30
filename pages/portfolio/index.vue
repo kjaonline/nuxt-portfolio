@@ -6,13 +6,16 @@
       <div class="content">
         <div class="tags">
           <ul>
-            <li v-for="tag in portfoliotags" v-bind:key="tag.id" v-on:click="modifyTagsArray($event, tag.slug), modifyClasses($event), getPosts();">
+            <li v-for="tag in portfoliotags" v-bind:key="tag.id" v-on:click="modifyTagsArray($event, tag.slug), modifyClasses($event), getPosts(); addClearButton();">
               {{ tag.name }}
             </li>
           </ul>
         </div>
         <div class="posts">
-
+          <div v-for="(portfolio, index) in portfolioItems" v-bind:key="portfolio.index">
+            {{ portfolio.title }}
+            {{ portfolio.excerpt }}
+          </div>
         </div>
       </div>
   </div>
@@ -26,15 +29,20 @@ import axios from 'axios'
 export default {
   data: function() {
     return{
-      activeTags: []
+      activeTags: [],
+      portfolioItems: []
     }
   },
   computed: {
     ...mapState([
-      'portfoliotags'
+      'portfoliotags', 'portfolio'
     ])
   },
+  mounted(){
+    this.getinitialPosts()
+  },
   methods: {
+
     modifyTagsArray: function(event, tag){
       if(!this.activeTags.includes(tag)) {
         this.activeTags.push(tag)
@@ -55,21 +63,62 @@ export default {
             url: "https://api.krisalcordo.com/wp-json/kris_portfolio/v1/portfolio",
             data: {'tags': requestobject }
           })
-          let posts = result.data;
+          this.portfolioItems = result.data;
           // console.log(requestobject)
           // console.log('====')
-          console.log(posts)
+          console.log(this.portfolioItems)
 
       } catch(error) {
         console.log(error)
       }
-    }
+    },
+    getinitialPosts: async function(){
+      let data = this.activeTags
+      let requestobject = data
+      try {
+        	let result = await axios({
+            method: 'post',
+            url: "https://api.krisalcordo.com/wp-json/kris_portfolio/v1/portfolio",
+            data: {'tags': requestobject }
+          })
+          this.portfolioItems = result.data;
+          console.log(this.portfolioItems)
+
+      } catch(error) {
+        console.log(error)
+      }
+    } ,
+    addClearButton: function(){
+      // let clearShown = false;
+      // var list = document.querySelector('.content .tags ul');
+      // var tag = document.createElement('li');
+      // var text = document.createTextNode('Clear');
+      // tag.setAttribute('class', 'clear');
+      // tag.appendChild(text);
+
+      // if(clearShown === false ) {
+      //   list.appendChild(tag)
+      //   clearShown = true;
+      //   console.log(clearShown)
+      //   console.log(this.activeTags.length)
+      // } else if() {
+      //   let element = document.querySelector('.content .tags li:last-child');
+      //   clearShown = false;
+      //   element.remove();
+      // }
+    } 
   }
 }
 
 </script>
 
 <style lang="scss" scoped>
+  ::v-deep .clear {
+    cursor: pointer;
+    margin: 5px;
+    padding: 5px;
+    user-select: none;
+  }
   .content {
     display: flex;
     .tags {
@@ -85,17 +134,20 @@ export default {
     list-style-type: none;
     margin: 0;
     padding: 0;
-     li {
-       cursor: pointer;
-       margin: 5px;
-       padding: 5px;
-       user-select: none;
-     }
+    li {
+      cursor: pointer;
+      margin: 5px;
+      padding: 5px;
+      user-select: none;
+      border-radius: 5px;
+    }
+
   }
+
   .active{
     background: #132a13;
     color: #ffffff;
     font-weight: bold;
-    border-radius: 5px;
+    
   }
 </style>

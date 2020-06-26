@@ -5,6 +5,7 @@
       </div>
       <div class="content">
         <div class="tags">
+          <h2>Filter</h2>
           <ul>
             <li v-for="tag in portfoliotags" v-bind:key="tag.id" v-on:click="modifyTagsArray($event, tag.slug), modifyClasses($event), getPosts(); addClearButton();">
               {{ tag.name }}
@@ -13,8 +14,8 @@
         </div>
         <div class="posts">
           <div v-for="(portfolio, index) in portfolioItems" v-bind:key="portfolio.index">
-            {{ portfolio.title }}
-            {{ portfolio.excerpt }}
+            <h3>{{ portfolio.title }}</h3>
+            <div class="excerpt">{{ portfolio.excerpt }}</div>
           </div>
         </div>
       </div>
@@ -24,9 +25,13 @@
 <script>
 import {mapState} from 'vuex'
 import axios from 'axios'
+import Loader from '@/components/Loader'
 
 
 export default {
+  components: {
+    Loader
+  },
   data: function() {
     return{
       activeTags: [],
@@ -113,6 +118,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+  .posts {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+     > div {  
+       width: calc(100% / 4 - 10px);
+       margin: 5px;
+       padding: 20px;
+       h2 {
+         text-align: center;
+       }
+    }
+  }
   ::v-deep .clear {
     cursor: pointer;
     margin: 5px;
@@ -121,27 +140,38 @@ export default {
   }
   .content {
     display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
     .tags {
       width: 20%;
+      padding: 20px;
     }
     .content {
       width: 100%;
     }
   }
-  .tags ul {
+  .tags {
+    h2 {
+      text-transform: uppercase;
+      font-size: 1.5em;
+    }
+    ul {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
     margin: 0;
     padding: 0;
-    li {
-      cursor: pointer;
-      margin: 5px;
-      padding: 5px;
-      user-select: none;
-      border-radius: 5px;
-    }
+      
+      li {
+        cursor: pointer;
+        margin: 5px;
+        padding: 5px;
+        user-select: none;
+        border-radius: 5px;
+        font-size: .8em;
+      }
 
+    }
   }
 
   .active{

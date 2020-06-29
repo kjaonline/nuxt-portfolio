@@ -6,10 +6,11 @@
       <div class="content">
         <div class="tags">
           <h2>Filter</h2>
-          <ul>
-            <li v-for="tag in portfoliotags" v-bind:key="tag.id" v-on:click="modifyTagsArray($event, tag.slug), modifyClasses($event), getPosts(); addClearButton();">
+          <ul class="tags-filter">
+            <li class="dynamic" v-for="tag in portfoliotags" v-bind:key="tag.id" v-on:click="modifyTagsArray($event, tag.slug), modifyClasses($event), getPosts();">
               {{ tag.name }}
             </li>
+			<li  id="lastTag" class="active" v-on:click="resetTags(), modifyClasses($event)">Reset</li>
           </ul>
         </div>
         <div class="posts">
@@ -29,90 +30,76 @@ import Loader from '@/components/Loader'
 
 
 export default {
-  components: {
-    Loader
-  },
-  data: function() {
-    return{
-      activeTags: [],
-      portfolioItems: []
-    }
-  },
-  computed: {
-    ...mapState([
-      'portfoliotags', 'portfolio'
-    ])
-  },
-  mounted(){
-    this.getinitialPosts()
-  },
-  methods: {
+	components: {
+		Loader
+	},
+	data: function() {
+		return{
+			activeTags: [],
+			portfolioItems: []
+		}
+	},
+	computed: {
+		...mapState([
+		'portfoliotags', 'portfolio'
+		])
+	},
+	mounted(){
+		this.getinitialPosts()
+	},
+	methods: {
+		modifyTagsArray: function(event, tag){
+			if(!this.activeTags.includes(tag)) {
+				this.activeTags.push(tag)
+			} else {
+				this.activeTags.splice(this.activeTags.indexOf(tag), 1)
+			}
+		},
+		modifyClasses:function(event){
+			event.target.classList.toggle('active')
+			let lastTag = document.getElementById('lastTag')
 
-    modifyTagsArray: function(event, tag){
-      if(!this.activeTags.includes(tag)) {
-        this.activeTags.push(tag)
-      } else {
-        this.activeTags.splice(this.activeTags.indexOf(tag), 1)
-      }
-    },
-    modifyClasses:function(event){
-      event.target.classList.toggle('active')
-
-    },
-    getPosts: async function() {
-      let data = this.activeTags
-      let requestobject = data
-      try {
-        	let result = await axios({
-            method: 'post',
-            url: "https://api.krisalcordo.com/wp-json/kris_portfolio/v1/portfolio",
-            data: {'tags': requestobject }
-          })
-          this.portfolioItems = result.data;
-          // console.log(requestobject)
-          // console.log('====')
-          console.log(this.portfolioItems)
-
-      } catch(error) {
-        console.log(error)
-      }
-    },
-    getinitialPosts: async function(){
-      let data = this.activeTags
-      let requestobject = data
-      try {
-        	let result = await axios({
-            method: 'post',
-            url: "https://api.krisalcordo.com/wp-json/kris_portfolio/v1/portfolio",
-            data: {'tags': requestobject }
-          })
-          this.portfolioItems = result.data;
-          console.log(this.portfolioItems)
-
-      } catch(error) {
-        console.log(error)
-      }
-    } ,
-    addClearButton: function(){
-      // let clearShown = false;
-      // var list = document.querySelector('.content .tags ul');
-      // var tag = document.createElement('li');
-      // var text = document.createTextNode('Clear');
-      // tag.setAttribute('class', 'clear');
-      // tag.appendChild(text);
-
-      // if(clearShown === false ) {
-      //   list.appendChild(tag)
-      //   clearShown = true;
-      //   console.log(clearShown)
-      //   console.log(this.activeTags.length)
-      // } else if() {
-      //   let element = document.querySelector('.content .tags li:last-child');
-      //   clearShown = false;
-      //   element.remove();
-      // }
-    } 
-  }
+			if(this.activeTags.length == 0) {
+				lastTag.classList.add('active')
+				this.getPosts()
+			} else {
+				lastTag.classList.remove('active')
+			}
+		},
+		resetTags: function(){
+			let tags = document.querySelectorAll('.tags-filter li');
+			tags.forEach(element => element.classList.remove('active'));
+			this.activeTags = [];
+		},
+		getPosts: async function() {
+			let data = this.activeTags
+			let requestobject = data
+			try {
+				let result = await axios({
+					method: 'post',
+					url: "https://api.krisalcordo.com/wp-json/kris_portfolio/v1/portfolio",
+					data: {'tags': requestobject }
+				})
+				this.portfolioItems = result.data;
+			} catch(error) {
+				console.log(error)
+			}
+		},
+		getinitialPosts: async function(){
+			let data = this.activeTags
+			let requestobject = data
+			try {
+				let result = await axios({
+					method: 'post',
+					url: "https://api.krisalcordo.com/wp-json/kris_portfolio/v1/portfolio",
+					data: {'tags': requestobject }
+				})
+				this.portfolioItems = result.data;
+			} catch(error) {
+				console.log(error)
+			}
+		}
+	}
 }
 
 </script>
@@ -163,21 +150,24 @@ export default {
     padding: 0;
       
       li {
-        cursor: pointer;
-        margin: 5px;
-        padding: 5px;
-        user-select: none;
-        border-radius: 5px;
-        font-size: .8em;
+		text-align: center;
+		cursor: pointer;
+		margin: 5px;
+		padding: 5px;
+		user-select: none;
+		border-radius: 5px;
+		font-size: .8em;
+		border: 1px solid rgba(#132a13, .5);
+		&:last-child{
+			width: 100%;
+		}
       }
 
     }
   }
 
   .active{
-    background: #132a13;
-    color: #ffffff;
-    font-weight: bold;
-    
+		background: #132a13;
+		color: #ffffff;   
   }
 </style>

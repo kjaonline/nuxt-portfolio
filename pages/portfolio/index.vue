@@ -5,15 +5,16 @@
       </div>
       <div class="content">
         <div class="tags">
-          <h2>Filter</h2>
-          <ul class="tags-filter">
-            <li class="dynamic" v-for="tag in portfoliotags" v-bind:key="tag.id" v-on:click="modifyTagsArray($event, tag.slug), modifyClasses($event), getPosts();">
-              {{ tag.name }}
-            </li>
-			<li  id="lastTag" class="active" v-on:click="resetTags(), modifyClasses($event)">Reset</li>
-          </ul>
+			<h2>Filter</h2>
+			<ul class="tags-filter">
+				<li class="dynamic" v-for="tag in portfoliotags" v-bind:key="tag.id" v-on:click="modifyTagsArray($event, tag.slug), modifyClasses($event), getPosts();">
+				{{ tag.name }}
+				</li>
+				<li id="lastTag" class="active" v-on:click="resetTags(), modifyClasses($event)">Reset</li>
+			</ul>
         </div>
-        <div class="posts">
+        <div v-bind:class="{ loaded: loaded }" class="posts">
+			<Loader />
           <div v-for="(portfolio, index) in portfolioItems" v-bind:key="portfolio.index">
             <h3>{{ portfolio.title }}</h3>
             <div class="excerpt">{{ portfolio.excerpt }}</div>
@@ -36,12 +37,13 @@ export default {
 	data: function() {
 		return{
 			activeTags: [],
-			portfolioItems: []
+			portfolioItems: [],
+			loaded: false
 		}
 	},
 	computed: {
 		...mapState([
-		'portfoliotags', 'portfolio'
+			'portfoliotags', 'portfolio'
 		])
 	},
 	mounted(){
@@ -74,6 +76,7 @@ export default {
 		getPosts: async function() {
 			let data = this.activeTags
 			let requestobject = data
+			this.loaded = false
 			try {
 				let result = await axios({
 					method: 'post',
@@ -81,6 +84,7 @@ export default {
 					data: {'tags': requestobject }
 				})
 				this.portfolioItems = result.data;
+				this.loaded = true
 			} catch(error) {
 				console.log(error)
 			}
@@ -95,6 +99,7 @@ export default {
 					data: {'tags': requestobject }
 				})
 				this.portfolioItems = result.data;
+				this.loaded = true
 			} catch(error) {
 				console.log(error)
 			}
@@ -109,7 +114,8 @@ export default {
   .posts {
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
+	width: 100%;
+	position: relative;
      > div {  
        width: calc(100% / 4 - 10px);
        margin: 5px;
@@ -147,7 +153,8 @@ export default {
     flex-wrap: wrap;
     list-style-type: none;
     margin: 0;
-    padding: 0;
+	padding: 0;
+	position: relative;
       
       li {
 		text-align: center;

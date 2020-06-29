@@ -17,13 +17,16 @@
 	</div>
 	<div class="below-content">
 		<Resume />
-		<div class="blocks">
+		<div v-bind:class="{ loaded: loaded }" class="blocks">
+			
 			<div class="left">
 				<h2>Blog Posts</h2>
+				<Loader />
 				<Posts />
 			</div>
 			<div class="right">
 				<h2>Portfolio</h2>
+				<Loader />
 				<Portfolio />
 			</div>
 		</div>
@@ -32,15 +35,23 @@
 </template>
 
 <script>
-  import Posts from '@/components/Bloglist'
-  import Portfolio from '@/components/Portfoliolist'
-  import Resume from '@/components/Resume'
-  export default {
+	import { mapState } from 'vuex'
+  	import Posts from '@/components/Bloglist'
+  	import Portfolio from '@/components/Portfoliolist'
+	import Resume from '@/components/Resume'
+	import Loader from '@/components/Loader'
+  	export default {
 	components: {
 	  Posts,
 	  Portfolio,
-	  Resume
+	  Resume,
+	  Loader
 	},
+	computed: {
+        ...mapState([
+            'loaded'
+        ])
+    },
 	data: function () {
 	  return {
 		years: ''
@@ -60,6 +71,15 @@
 
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+	.blocks {
+		> div {
+			position: relative;
+			min-height: 200px;
+		}
+		.lds-ring {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
 </style>

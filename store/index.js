@@ -6,7 +6,7 @@ export const state = () => ({
 	tags: '',
 	resume: '',
 	portfoliotags: '',
-	loaded: true
+	loaded: false
 })
 export const mutations = {
     SETPOSTS(state, value){
@@ -20,6 +20,7 @@ export const mutations = {
 	},
 	SETRESUME(state, value) {
 		state.resume = value
+		state.loaded = true
 	},
 	SETTPORTFOLIOAGS(state, value) {
 		state.portfoliotags = value
